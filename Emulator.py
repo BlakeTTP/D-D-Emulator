@@ -20,6 +20,7 @@ DEX = int (input("Enter your dexterity: "))
 CON = int (input("Enter your constitution: "))
 WIS = int (input("Enter your wisdom: "))
 INT = int (input("Enter your intelligence: "))
-CHA = int (input("Enter your charisma: "))
+#CHA = int (input("Enter your charisma: "))
+
 
 
