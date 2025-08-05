@@ -43,9 +43,9 @@ if answer1 == "yes":
     a1 = 1
     input("since you said yes, this thing happens! roll for strength!")
     check = rollSTR()
-    if check > 9:
+    if check >= 9:
         input("you passed the check! insert good job here!")
-    if check < 9:
+    if check <= 9:
         input("you failed the check! rip")
 
 if answer1 == "no":
