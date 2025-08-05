@@ -38,7 +38,7 @@ def rollSTR():
 #continuation
 input("Now, lets begin your journey.")
 print("\nChoose your role:warrior, theif or rogue.")
-role = input("Enter your role:")
+role.lower() = input("Enter your role:")
 print("Great Choice!!!")
 
 #based on the roles
