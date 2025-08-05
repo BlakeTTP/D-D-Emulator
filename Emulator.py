@@ -54,8 +54,7 @@ answer1 = input("testcheck1: enter yes no or maybe: ")
 if answer1 == "yes":
     input("you said yes!")
     a1 = 1
-    input("since you said
-    yes, this thing happens! roll for strength!")
+    input("since you said yes, this thing happens! roll for strength!")
     check = rollSTR()
     if check >= 9:
         input("you passed the check! insert good job here!")
