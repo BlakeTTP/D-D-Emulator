@@ -4,10 +4,10 @@ import random
 
 #beginning part/decription of skills
 input("(Whenever you don't need to enter anything in, then just press ENTER to continue.)")
-input("(As well, answer everything in all lowercase, and no typos.)")
+#input("(As well, answer everything in all lowercase, and no typos.)")
 input("First, to begin your story, we need to configure your stats.")
 input("There's six to configure.")
-input("Strength(STR): Determines how physically strong you are.")
+print("Strength(STR): Determines how physically strong you are.")
 input("Dexterity(DEX): Determines your flexibility, dodging, and sneaking ability.")
 input("Constitution(CON): Determines how much your body can physically take, mainly health.")
 input("Wisdom(WIS): Determines how wise you are/how much conventional wisdom you have, or 'common sense'.")
@@ -36,12 +36,26 @@ def rollSTR():
         return check
     
 #continuation
-input("Now, to begin your journey.")
+input("Now, lets begin your journey.")
+print("\nChoose your role:warrior, theif or rogue.")
+role: input("Enter your role:").lowercase()
+print("Great Choice!!!")
+
+#based on the roles
+if role=="warrior":
+    print("\n You are a fearless Warrior, clad in heavy armor, with shield and sword in hand, marching toward the Fortress.")
+elif role=="theif":
+    print("You are a master Thief, who is quick, clever, and silent, with hands skilled in locks and a mind sharp as any blade.")
+elif role=="rogue":
+    print("You are a Rogue, who is silent but deadly since you are a sharp dagger no matter where you stand, and always four steps ahead.")
+
+
 answer1 = input("testcheck1: enter yes no or maybe: ")
 if answer1 == "yes":
     input("you said yes!")
     a1 = 1
-    input("since you said yes, this thing happens! roll for strength!")
+    input("since you said
+    yes, this thing happens! roll for strength!")
     check = rollSTR()
     if check >= 9:
         input("you passed the check! insert good job here!")
