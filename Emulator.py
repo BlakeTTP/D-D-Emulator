@@ -1,4 +1,5 @@
 import random
+import sys
 #random.randint(1, 6)
 #random.randint(1, 20)
 
@@ -167,7 +168,7 @@ if nexta1 == "bash":
         input("You passed the check! The door's hinges creak loudly as the rotting wood crashes down.")
     elif check < 6:
         input("you failed the check!\n GAME OVER!!!")
-        exit()
+        sys.exit()
 elif nexta1=="cast":
     spells = ["Firebolt","Frost Shield","Teleport Spark"]
     used_spells = []
@@ -190,7 +191,7 @@ elif nexta1=="cast":
 
 if spell_choice == "Frost Shield" and spell_choice == "2":
    print("The Frost shield freezes your power! \n You made a fatal mistake...\n You are defeated \n GAME OVER!!!")
-    exit()
+    sys.exit()
 else:
    print(f"Since you chose {spell_choice}, spell cast successfully!!!")
         
