@@ -155,7 +155,7 @@ def beginningchoice():
          print("Using magic to grab your tome - 'cast' (This will use up one of your three spells)")
     elif role == "rogue":
         print("Lockpicking the door - 'lock'")
-    input("Calling out for a guard to trick - 'call'")
+    print("Calling out for a guard to trick - 'call'")
     a1 = input("What do you want to do? Enter: ")
     return a1
 
@@ -178,7 +178,7 @@ elif nexta1=="cast":
             print(f"{i+1}.{spell}")
     spell_choice = input("Enter the spell number(1-3): ")
     if spell_choice == "1" and "Firebolt" not in used_spells:
-        used_spell.append("Firebolt")
+       # used_spell.append("Firebolt")
         input("You cast Firebolt! The door bursts into flames and collapses.")
     elif spell_choice == "2" and "Frost Shield" not in used_spell:
         used_spell.append("Frost Shield")
