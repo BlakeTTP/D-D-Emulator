@@ -182,18 +182,16 @@ elif nexta1=="cast":
         input("You cast Firebolt! The door bursts into flames and collapses.")
     elif spell_choice == "2" and "Frost Shield" not in used_spell:
         used_spell.append("Frost Shield")
-        input("You cast Frost Shield! A magical barrier surrounds you.")
+        print("You cast Frost Shield! A magical barrier surrounds you.")
+        input("This freezes you power, since you made a fatal mistake.\n GAME OVER ")
+        exit()
     elif spell_choice == "3" and "Teleport Spark" not in used_spells:
         used_spell.append("Teleport Spark")
         input("You teleport through the cark in the wall and appear on the other side of the door!")
     else:
         input("Invalid choice or you've already used the spell.")
 
-if spell_choice == "Frost Shield" and spell_choice == "2":
-   print("The Frost shield freezes your power! \n You made a fatal mistake...\n You are defeated \n GAME OVER!!!")
-else:
-   print(f"Since you chose {spell_choice}, spell cast successfully!!!")
-        
+  
 
 
 
