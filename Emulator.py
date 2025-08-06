@@ -196,6 +196,14 @@ elif nexta1 == "cast":
     else:
         print("Invalid choice or you already used a spell.")
 
+elif nexta1 == "lock" :
+    input("You attempt to pick the lock... ")
+    print("Intelligence check!!!")
+    check = rollINT()
+    if check >= 7:
+        input("Sucsess! The lock clicks open. You silently slip into the next stage of escape")
+    elif check < 7:
+        input("You failed the check!\n GAME OVER!!!")
 
 
 
