@@ -169,7 +169,7 @@ if nexta1 == "bash":
         input("you failed the check! rip")
 
     
-answer1 = input("testcheck1: enter yes no or maybe: ")
+"""answer1 = input("testcheck1: enter yes no or maybe: ")
 if answer1 == "yes":
     input("you said yes!")
     a1 = 1
@@ -186,5 +186,5 @@ if answer1 == "no":
 
 if answer1 == "maybe":
     input("you said maybe!")
-    a1 = 3
+    a1 = 3"""
 
