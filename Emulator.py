@@ -204,7 +204,12 @@ elif nexta1 == "lock" :
         input("Sucsess! The lock clicks open. You silently slip into the next stage of escape")
     elif check < 7:
         input("You failed the check!\n GAME OVER!!!")
-
+        exit()
+elif nexta1 == "call":
+    print("You knock on the door, pretending to be scared.")
+    print("Footsteps approach quickly...")
+    print("As the guard opens the door, your hidden magic rune ignites!")
+    input("The guard is thrown back, unconscious. The way is clear.")
 
 
         
