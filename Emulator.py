@@ -152,11 +152,11 @@ def beginningchoice():
     if role == "warrior":
         print("Bashing the door down - 'bash'")
     elif role == "mage":
-         print("Using magic to grab your tome - 'cast' (This will use up one of your three spells)")
+         print("\nUsing magic to grab your tome - 'cast' (This will use up one of your three spells)")
     elif role == "rogue":
         print("Lockpicking the door - 'lock'")
     print("Calling out for a guard to trick - 'call'")
-    a1 = input("What do you want to do? Enter: ")
+    a1 = input("\nWhat do you want to do? Enter: ")
     return a1
 
 beginning()
@@ -178,7 +178,7 @@ elif nexta1=="cast":
             print(f"{i+1}.{spell}")
     spell_choice = input("Enter the spell number(1-3): ")
     if spell_choice == "1" and "Firebolt" not in used_spells:
-       # used_spell.append("Firebolt")
+        used_spell.append("Firebolt")
         input("You cast Firebolt! The door bursts into flames and collapses.")
     elif spell_choice == "2" and "Frost Shield" not in used_spell:
         used_spell.append("Frost Shield")
@@ -188,9 +188,7 @@ elif nexta1=="cast":
     elif spell_choice == "3" and "Teleport Spark" not in used_spells:
         used_spell.append("Teleport Spark")
         input("You teleport through the cark in the wall and appear on the other side of the door!")
-    else:
-        input("Invalid choice or you've already used the spell.")
-
+    
   
 
 
