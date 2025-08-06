@@ -26,10 +26,10 @@ input("First, to begin your story, we need to configure your stats.")
 input("Whatever class you choose already added +1 to one of them, which stacks with whatever you choose as your array.")
 input("While you can choose otherwise, it's recommended to have your main stat you use for your class be high for class specific options.")
 input("There's six to configure.")
-print("Strength(STR): Determines how physically strong you are.\n Dexterity(DEX): Determines your flexibility, dodging, and sneaking ability.\nConstitution(CON): Determines how much your body can physically take, mainly health.")
+print("\nStrength(STR): Determines how physically strong you are.\nDexterity(DEX): Determines your flexibility, dodging, and sneaking ability.\nConstitution(CON): Determines how much your body can physically take, mainly health.")
 #input("Dexterity(DEX): Determines your flexibility, dodging, and sneaking ability.")
 #input("Constitution(CON): Determines how much your body can physically take, mainly health.")
-print("\nWisdom(WIS): Determines how wise you are/how much conventional wisdom you have, or 'common sense'.\nIntelligence(INT): Determines how much you know, or 'book knowledge'.\nCharisma(CHA): Determines your social skills.")
+print("Wisdom(WIS): Determines how wise you are/how much conventional wisdom you have, or 'common sense'.\nIntelligence(INT): Determines how much you know, or 'book knowledge'.\nCharisma(CHA): Determines your social skills.")
 #input("Intelligence(INT): Determines how much you know, or 'book knowledge'.")
 #input("Charisma(CHA): Determines your social skills.")
 input("\nEverytime you make a decision, a die is rolled to see how effective it is.\nThese stats are modifiers that make you better or worse at certain skills.")
@@ -149,11 +149,11 @@ def beginningchoice():
     input("The door doesn't seem too sturdy. The lock also appears to be relatively weak...")
     input("You could try:")
     if role == "warrior":
-        input("Bashing the door down - 'bash'")
+        print("Bashing the door down - 'bash'")
     elif role == "mage":
-        input ("Using magic to grab your tome - 'cast' (This will use up one of your three spells)")
+         print("Using magic to grab your tome - 'cast' (This will use up one of your three spells)")
     elif role == "rogue":
-        input("Lockpicking the door - 'lock'")
+        print("Lockpicking the door - 'lock'")
     input("Calling out for a guard to trick - 'call'")
     a1 = input("What do you want to do? Enter: ")
     return a1
@@ -165,8 +165,39 @@ if nexta1 == "bash":
     check = rollSTR()
     if check >= 6:
         input("You passed the check! The door's hinges creak loudly as the rotting wood crashes down.")
-    if check < 6:
-        input("you failed the check! rip")
+    elif check < 6:
+        input("you failed the check!\n GAME OVER!!!")
+        exit()
+elif nexta1=="cast":
+    spells = ["Firebolt","Frost Shield","Teleport Spark"]
+    used_spells = []
+    print("Choose a spell to cast:")
+    for i, spell in enumerate(spells):
+        if spell not in used_spells:
+            print(f"{i+1}.{spell}")
+    spell_choice = input("Enter the spell number(1-3): ")
+    if spell_choice == "1" and "Firebolt" not in used_spells:
+        used_spell.append("Firebolt")
+        input("You cast Firebolt! The door bursts into flames and collapses.")
+    elif spell_choice == "2" and "Frost Shield" not in used_spell:
+        used_spell.append("Frost Shield")
+        input("You cast Frost Shield! A magical barrier surrounds you.")
+    elif spell_choice == "3" and "Teleport Spark" not in used_spells:
+        used_spell.append("Teleport Spark")
+        input("You teleport through the cark in the wall and appear on the other side of the door!")
+    else:
+        input("Invalid choice or you've already used the spell.")
+
+if spell_choice == "Frost Shield" and spell_choice == "2":
+   print("The Frost shield freezes your power! \n You made a fatal mistake...\n You are defeated \n GAME OVER!!!")
+    exit()
+else:
+   print(f"Since you chose {spell_choice}, spell cast successfully!!!")
+        
+
+
+
+        
 
     
 """answer1 = input("testcheck1: enter yes no or maybe: ")
