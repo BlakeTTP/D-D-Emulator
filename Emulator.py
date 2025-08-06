@@ -169,28 +169,33 @@ if nexta1 == "bash":
     elif check < 6:
         input("you failed the check!\n GAME OVER!!!")
         
-elif nexta1=="cast":
-    spells = ["Firebolt","Frost Shield","Teleport Spark"]
+elif nexta1 == "cast":
+    spells = ["Firebolt", "Frost Shield", "Teleport Spark"]
     used_spells = []
+
     print("Choose a spell to cast:")
     for i, spell in enumerate(spells):
-        if spell not in used_spells:
-            print(f"{i+1}.{spell}")
-    spell_choice = input("Enter the spell number(1-3): ")
+        print(f"{i+1}. {spell}")
+
+    spell_choice = input("Enter the spell number (1-3): ")
+
     if spell_choice == "1" and "Firebolt" not in used_spells:
-         input("You cast Firebolt! The door bursts into flames and collapses.")
-        used_spell.append("Firebolt")
-       # input("You cast Firebolt! The door bursts into flames and collapses.")
-    elif spell_choice == "2" and "Frost Shield" not in used_spell:
-        used_spell.append("Frost Shield")
+        used_spells.append("Firebolt")
+        input("You cast Firebolt! The door bursts into flames and collapses.")
+
+    elif spell_choice == "2" and "Frost Shield" not in used_spells:
+        used_spells.append("Frost Shield")
         print("You cast Frost Shield! A magical barrier surrounds you.")
-        input("This freezes you power, since you made a fatal mistake.\n GAME OVER ")
+        input("This freezes your power, since you made a fatal mistake.\nGAME OVER")
         exit()
+
     elif spell_choice == "3" and "Teleport Spark" not in used_spells:
-        used_spell.append("Teleport Spark")
-        input("You teleport through the cark in the wall and appear on the other side of the door!")
-    
-  
+        used_spells.append("Teleport Spark")
+        input("You teleport through the crack in the wall and appear on the other side of the door!")
+
+    else:
+        print("Invalid choice or you already used a spell.")
+
 
 
 
