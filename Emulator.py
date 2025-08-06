@@ -1,5 +1,5 @@
 import random
-import sys
+
 #random.randint(1, 6)
 #random.randint(1, 20)
 
@@ -178,8 +178,9 @@ elif nexta1=="cast":
             print(f"{i+1}.{spell}")
     spell_choice = input("Enter the spell number(1-3): ")
     if spell_choice == "1" and "Firebolt" not in used_spells:
+         input("You cast Firebolt! The door bursts into flames and collapses.")
         used_spell.append("Firebolt")
-        input("You cast Firebolt! The door bursts into flames and collapses.")
+       # input("You cast Firebolt! The door bursts into flames and collapses.")
     elif spell_choice == "2" and "Frost Shield" not in used_spell:
         used_spell.append("Frost Shield")
         print("You cast Frost Shield! A magical barrier surrounds you.")
