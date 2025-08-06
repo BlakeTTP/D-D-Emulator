@@ -151,9 +151,9 @@ def beginningchoice():
         input("Bashing the door down - 'bash'")
     elif role == "mage":
         input ("Using magic to grab your tome - 'cast' (This will use up one of your three spells)")
-    elif role == "rogue"
+    elif role == "rogue":
         input("Lockpicking the door - 'lock'")
-    input("Calling out for a guard to trick - 'call")
+    input("Calling out for a guard to trick - 'call'")
     a1 = input("What do you want to do? Enter: ")
     return a1
 
