@@ -317,14 +317,14 @@ def b1choiceif():
     global nextb1
 
 
-#beginning()
+beginning()
 nexta1 = beginningchoice()
 officala1 = beginningchoiceif()
 #successful choices: afirebolt, abash, acall, alock, ateleport
 #first choice split off
-if officala1 == "afirebolt" or "abash":
-    nextb1 = b1choice()
-    officalb1 = b1choiceif()
+#if officala1 == "afirebolt" or "abash":
+#    nextb1 = b1choice()
+#    officalb1 = b1choiceif()
 #if officala1 = "acall"
 #    nextb2 = b2choice()
 #    officalb2 = b2choiceif()
