@@ -35,7 +35,7 @@ print("Wisdom(WIS): Determines how wise you are/how much conventional wisdom you
 #input("Charisma(CHA): Determines your social skills.")
 input("\nEverytime you make a decision, a die is rolled to see how effective it is.\nThese stats are modifiers that make you better or worse at certain skills.")
 #input("These stats are modifiers that make you better or worse at certain skills.")
-input("You possess a unique set of trait values to distribute among your skills. Use each value wisely, once assigned, it cannot be used again [-1, 0, 1, 1, 2, and 2.]")
+input("You possess a unique set of trait values to distribute among your skills.\nUse each value wisely, once assigned, it cannot be used again [-1, 0, 1, 1, 2, and 2.]")
 #input("That means you can use each number once, for each stat.")
 STR = int (input("\nEnter your strength: "))
 DEX = int (input("Enter your dexterity: "))
@@ -145,92 +145,106 @@ def beginning():
     input("Moving sluggishly from exhaustion, reflexes slowed despite yourself, you ended up kidnapped.")
     input("By amateurs, too. As you pat yourself down, you find your stuff only a few meters away.")
     input("Behind bars, yes, but only a few meters. If- no, WHEN you get out, you could get your stuff back.")
+
+a1bashfail = False
+a1lockfail = False
+a1callfail = False
+
 #beginning choice
 def beginningchoice():
     input("The door doesn't seem too sturdy. The lock also appears to be relatively weak...")
     input("You could try:")
-    if role == "warrior":
+    if role == "warrior" and a1bashfail == False:
         print("Bashing the door down - 'bash'")
     elif role == "mage":
          print("\nUsing magic to grab your tome - 'cast' (This will use up one of your three spells)")
-    elif role == "rogue":
+    elif role == "rogue" and a1bashfail == False:
         print("Lockpicking the door - 'lock'")
-    print("Calling out for a guard to trick - 'call'")
+    if a1callfail == False:
+        print("Calling out for a guard to trick - 'call'")
     a1 = input("\nWhat do you want to do? Enter: ")
     return a1
 
-beginning()
+
+def beginningchoiceif():
+    #warrior
+    global nexta1
+    global a1bashfail
+    global a1lockfail
+    global a1callfail
+
+    if nexta1 == "bash" and a1bashfail == False:
+        input("You attempt to bash the door down! Strength check!")
+        check = rollSTR()
+        if check >= 6:
+            input("You passed the check! The door's hinges creak loudly as the rotting wood crashes down.")
+            return "abash"
+        elif check < 6:
+            input("You failed the check! Try something else!")
+            a1bashfail = True
+            nexta1 = beginningchoice()
+            beginningchoiceif() 
+    if nexta1 == "bash" and a1bashfail == True:
+        print("You already failed that option! Try a different one.") 
+        nexta1 = beginningchoice()
+        beginningchoiceif()
+              
+    #mage
+    elif nexta1 == "cast":
+        spells = ["Firebolt", "Frost Shield", "Teleport Spark"]
+        used_spells = []
+        print("Choose a spell to cast:")
+        for i, spell in enumerate(spells):
+            print(f"{i+1}. {spell}")
+
+        spell_choice = input("Enter the spell number (1-3): ")
+
+        if spell_choice == "1" or spell_choice == "firebolt" and "Firebolt" not in used_spells:
+            used_spells.append("Firebolt")
+            input("You cast Firebolt! The door bursts into flames and collapses.")
+            input("As the flames flicker, you carefully step over the decimated door to grab your stuff, when-")
+            return "afirebolt"
+
+        elif spell_choice == "2" or spell_choice == "frost shield" and "Frost Shield" not in used_spells:
+            used_spells.append("Frost Shield")
+            print("You cast Frost Shield! A magical barrier surrounds you.")
+            input("...")
+            input("Since you're trying to get out and nothing's trying to get in, there's nothing it can really do.")
+            input("Try again!")
+            print(used_spells)
+            nexta1 == beginningchoice()
+            beginningchoiceif()
+
+        elif spell_choice == "3" or spell_choice == "teleport spark" and "Teleport Spark" not in used_spells:
+            used_spells.append("Teleport Spark")
+            input("You teleport through the crack in the wall and appear on the other side of the door!")
+
+        else:
+            print("Invalid choice or you already used a spell.")
+            input("Try again!")
+            nexta1 == beginningchoice()
+            beginningchoiceif()
+    #rogue
+    elif nexta1 == "lock" :
+        input("You attempt to pick the lock... ")
+        print("Dexterity check!!!")
+        check = rollDEX()
+        if check >= 7:
+            input("Sucsess! The lock clicks open. You silently slip into the next stage of escape")
+        elif check < 7:
+            input("You failed the check!\n GAME OVER!!!")
+            exit()
+    #general
+    elif nexta1 == "call":
+        print("You knock on the door, pretending to be scared.")
+        print("Footsteps approach quickly...")
+        print("As the guard opens the door, your hidden magic rune ignites!")
+        input("The guard is thrown back, unconscious. The way is clear.")
+
+#beginning()
 nexta1 = beginningchoice()
-if nexta1 == "bash":
-    input("You attempt to bash the door down! Strength check!")
-    check = rollSTR()
-    if check >= 6:
-        input("You passed the check! The door's hinges creak loudly as the rotting wood crashes down.")
-    elif check < 6:
-        input("you failed the check!\n GAME OVER!!!")
-        
-elif nexta1 == "cast":
-    spells = ["Firebolt", "Frost Shield", "Teleport Spark"]
-    used_spells = []
-
-    print("Choose a spell to cast:")
-    for i, spell in enumerate(spells):
-        print(f"{i+1}. {spell}")
-
-    spell_choice = input("Enter the spell number (1-3): ")
-
-    if spell_choice == "1" and "Firebolt" not in used_spells:
-        used_spells.append("Firebolt")
-        input("You cast Firebolt! The door bursts into flames and collapses.")
-
-    elif spell_choice == "2" and "Frost Shield" not in used_spells:
-        used_spells.append("Frost Shield")
-        print("You cast Frost Shield! A magical barrier surrounds you.")
-        input("This freezes your power, since you made a fatal mistake.\nGAME OVER")
-        exit()
-
-    elif spell_choice == "3" and "Teleport Spark" not in used_spells:
-        used_spells.append("Teleport Spark")
-        input("You teleport through the crack in the wall and appear on the other side of the door!")
-
-    else:
-        print("Invalid choice or you already used a spell.")
-
-elif nexta1 == "lock" :
-    input("You attempt to pick the lock... ")
-    print("Intelligence check!!!")
-    check = rollINT()
-    if check >= 7:
-        input("Sucsess! The lock clicks open. You silently slip into the next stage of escape")
-    elif check < 7:
-        input("You failed the check!\n GAME OVER!!!")
-        exit()
-elif nexta1 == "call":
-    print("You knock on the door, pretending to be scared.")
-    print("Footsteps approach quickly...")
-    print("As the guard opens the door, your hidden magic rune ignites!")
-    input("The guard is thrown back, unconscious. The way is clear.")
+a = beginningchoiceif()
+#successful choices: afirebolt, abash, acall, alock, ateleport
 
 
-        
-
-    
-"""answer1 = input("testcheck1: enter yes no or maybe: ")
-if answer1 == "yes":
-    input("you said yes!")
-    a1 = 1
-    input("since you said yes, this thing happens! roll for strength!")
-    check = rollSTR()
-    if check >= 9:
-        input("you passed the check! insert good job here!")
-    if check <= 9:
-        input("you failed the check! rip")
-
-if answer1 == "no":
-    input("you said no!")
-    a1 = 2
-
-if answer1 == "maybe":
-    input("you said maybe!")
-    a1 = 3"""
 
