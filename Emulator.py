@@ -231,6 +231,7 @@ def beginningchoiceif():
         elif spell_choice == "3" or spell_choice == "teleport spark" and "Teleport Spark" not in used_spells:
             used_spells.append("Teleport Spark")
             input("You teleport through the crack in the wall and appear on the other side of the door!")
+            return "ateleport"
 
         else:
             print("Invalid choice or you already used a spell.")
@@ -247,6 +248,7 @@ def beginningchoiceif():
         check = rollDEX()
         if check >= 7:
             input("Success! The lock clicks open. You silently slip out of your cell.")
+            return "alock"
         elif check < 7:
             input("As you attempt to push it in, you push too far in the wrong direction as you hear the wrong click.")
             input("You retract the pin, now broken in two.")
@@ -298,10 +300,36 @@ def beginningchoiceif():
         nexta1 = beginningchoice()
         beginningchoiceif()
 
+#successful choices: afirebolt, abash
+def b1choice():
+    input("As the door breaking resounds through the empty air, you hear footsteps rapidly approaching.")
+    print("guard comes etc etc (fill in rest later)")
+    print("You could:")
+    print("Fight them! - 'fight'")
+    print("Try to run away - 'run'")
+    print("Try to grab your stuff, and THEN run - 'grab'") #harder to pass check, but otherwise you don't get stuff as a variable later on
+    if role == "mage":
+        print("Cast a spell - 'cast'")
+    b1 = input("\nWhat do you want to do? Enter: ")
+    return b1
+def b1choiceif():
+    global check
+    global nextb1
+
+
 #beginning()
 nexta1 = beginningchoice()
-a1choice = beginningchoiceif()
+officala1 = beginningchoiceif()
 #successful choices: afirebolt, abash, acall, alock, ateleport
+#first choice split off
+if officala1 == "afirebolt" or "abash":
+    nextb1 = b1choice()
+    officalb1 = b1choiceif()
+#if officala1 = "acall"
+#    nextb2 = b2choice()
+#    officalb2 = b2choiceif()
+
+
 
 
 
