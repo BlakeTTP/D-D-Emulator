@@ -2,25 +2,34 @@ import random
 
 #random.randint(1, 6)
 #random.randint(1, 20)
-
+#add debug mode
 #beginning part/decription of skills
-input("WELCOME, ADVENTURER, TO OUR RELEAM!!!\n (Whenever you don't need to enter anything in, then just press ENTER to continue.)")
+input("WELCOME, ADVENTURER, TO OUR REALM!!!\n (Whenever you don't need to enter anything in, then just press ENTER to continue.)")
 input("Now, let's begin your journey.\n ")
-print("\nChoose your role: warrior, mage or rogue.")
-role = input("Enter your role: ")
-print("Great Choice!!!")
+def rolechoice():
+    global role
+    print("\nChoose your role: warrior, mage or rogue.")
+    role = input("Enter your role: ")
+    if role == "warrior" or "mage" or "rogue":
+        print("Great Choice!!!")
+    #based on the roles
+    if role=="warrior":
+        print("You are a fearless Warrior, clad in heavy armor, with shield and sword in skilled hands.") #", marching toward the Fortress"
+        print("(+1 to Strength)")
+    elif role=="mage":
+        #print("You are a master Thief, who is quick, clever, and silent, with hands skilled in locks and a mind sharp as any blade.")
+        print("You are a Mage, an apprentice learning the art of the magic that flows through your world, knowledge heavy as your tome.")
+        print("(+1 to Intelligence)")
+    elif role=="rogue":
+        print("You are a Rogue, who is silent but deadly with a sharp dagger no matter where you stand, and always four steps ahead.")
+        print("(+1 to Dexterity)")
+    else:
+        input("Invalid option! Try again.")
+        role = rolechoice()
+    return role
 
-#based on the roles
-if role=="warrior":
-    print("You are a fearless Warrior, clad in heavy armor, with shield and sword in hand, marching toward the Fortress.") #", marching toward the Fortress"
-    print("(+1 to Strength)")
-elif role=="mage":
-    #print("You are a master Thief, who is quick, clever, and silent, with hands skilled in locks and a mind sharp as any blade.")
-    print("You are a Mage, an apprentice learning the art of the magic that flows through your world, knowledge heavy as your tome.")
-    print("(+1 to Intelligence)")
-elif role=="rogue":
-    print("You are a Rogue, who is silent but deadly since you are a sharp dagger no matter where you stand, and always four steps ahead.")
-    print("(+1 to Dexterity)")
+role = rolechoice()
+
 
 #stat configuration
 input("First, to begin your story, we need to configure your stats.")
@@ -150,6 +159,8 @@ a1bashfail = False
 a1lockfail = False
 a1callfail = False
 check = 0
+phealth = CON + 10
+haveItems = False
 
 #beginning choice
 def beginningchoice():
@@ -183,6 +194,7 @@ def beginningchoiceif():
     global a1bashfail
     global a1lockfail
     global a1callfail
+    global officala1
     global check
 
     if nexta1 == "bash" and a1bashfail == False:
@@ -196,11 +208,11 @@ def beginningchoiceif():
             input("You failed the check! Try something else!")
             a1bashfail = True
             nexta1 = beginningchoice()
-            beginningchoiceif() 
-    if nexta1 == "bash" and a1bashfail == True:
+            officala1 = beginningchoiceif() 
+    elif nexta1 == "bash" and a1bashfail == True:
         print("You already failed that option! Try a different one.") 
         nexta1 = beginningchoice()
-        beginningchoiceif()
+        officala1 = beginningchoiceif()
               
     #mage
     elif nexta1 == "cast":
@@ -226,18 +238,18 @@ def beginningchoiceif():
             input("Try again!")
             #print(used_spells) Btw the used spells doesn't work for some weird reason - to do later
             nexta1 == beginningchoice()
-            beginningchoiceif()
+            officala1 = beginningchoiceif()
 
         elif spell_choice == "3" or spell_choice == "teleport spark" and "Teleport Spark" not in used_spells:
             used_spells.append("Teleport Spark")
-            input("You teleport through the crack in the wall and appear on the other side of the door!")
+            input("You teleport through the bars and appear on the other side of the door!")
             return "ateleport"
 
         else:
             print("Invalid choice or you already used a spell.")
             input("Try again!")
             nexta1 == beginningchoice()
-            beginningchoiceif()
+            officala1 = beginningchoiceif()
     #rogue
     elif nexta1 == "lock" and a1lockfail == False:
         input("You take out your hair pin, letting your hair down for a bit.")
@@ -255,11 +267,11 @@ def beginningchoiceif():
             input("You failed the check! Try something else!")
             a1lockfail = True
             nexta1 == beginningchoice()
-            beginningchoiceif()
+            officala1 = beginningchoiceif()
     elif nexta1 == "lock" and a1lockfail == True:
         print("You already failed that option! Try a different one.") 
         nexta1 = beginningchoice()
-        beginningchoiceif()
+        officala1 = beginningchoiceif()
 
     #general - call
     elif nexta1 == "call" and a1callfail == False:
@@ -280,7 +292,7 @@ def beginningchoiceif():
             input("(For dramatic effect, as you sit on the cold murky ground, you clutch your leg to your chest.)")
             input("The guard sighs. 'Damn damsel already making my life difficult...' He mutters to himself.")
             input("He starts getting his keys out for the door. As the key slots in, the door swings open as you lunge for him!")
-            input("'Wh- I thought you were injured!' he yells in the struggle, as you press your boot against his head as you grasp for the keys.")
+            input("'Wh- you little-!' he yells in the struggle, as you press your boot against his head as you grasp for the keys.")
             input("Got them!")
             input("As you kick the guard one final time, he falls unconcious as you brush yourself off. Man. You can't believe how easy that was.")
             input("The sandwich remains disgarded as you step out the cell.")
@@ -294,27 +306,93 @@ def beginningchoiceif():
             input("You failed the check! Try something else.")
             a1callfail = True
             nexta1 = beginningchoice()
-            beginningchoiceif() 
+            officala1 = beginningchoiceif()
     elif nexta1 == "call" and a1callfail == True:
         print("You already failed that option! Try a different one.") 
         nexta1 = beginningchoice()
-        beginningchoiceif()
+        officala1 = beginningchoiceif()
+    else:
+        input("Invalid option! Try again.")
+        nexta1 = beginningchoice()
+        officala1 = beginningchoiceif()
 
 #successful choices: afirebolt, abash
 def b1choice():
-    input("As the door breaking resounds through the empty air, you hear footsteps rapidly approaching.")
-    print("guard comes etc etc (fill in rest later)")
+    input("As the door breaking resounds through the empty air, you hear a pair of footsteps rapidly approaching.")
+    input("Guards are coming! You quickly glance your surroundings, looking for options.")
+    input("Your stuff is but only a few meters away, but could take up precious seconds...")
     print("You could:")
-    print("Fight them! - 'fight'")
-    print("Try to run away - 'run'")
+    print("Grab your stuff and fight them! - 'fight'")
+    print("Try to run away! - 'run'")
     print("Try to grab your stuff, and THEN run - 'grab'") #harder to pass check, but otherwise you don't get stuff as a variable later on
     if role == "mage":
         print("Cast a spell - 'cast'")
     b1 = input("\nWhat do you want to do? Enter: ")
     return b1
+
+bfightHaveAdvantage = False
+bfightHaveDisadvantage = False
+
+def bfight():
+    global phealth
+def brun():
+    global haveItems
+    global check
+    if haveItems == False:
+        input("You take a longing look towards your stuff, but decide it's not worth the risk.")
+        input("...It'd be pretty hard to go back for it later.")
+        input("Either way, you decide to run for it!")
+        input("Roll to evade the guards!")
+        check = rollDEX()
+        if check > 5:
+            input("You start running, and find a room off the main path.")
+            input("Right as the guards round the corner,")
+    if haveItems == True:
+        input("You take a glance towards the connecting corridor, and grab your stuff!")
+
 def b1choiceif():
     global check
     global nextb1
+    global officalb1
+    global haveItems
+    if nextb1 == "fight":
+        input("You quickly lunge for your stuff, and take inventory of it.")
+        if role == "warrior":
+            input("It's your trusty sword and shield!")
+            input("You quickly wrap the sheath around your waist as you reveal your blade.")
+            input("As you see the guards rapidly approaching, you slide your shield onto your arm, ready in battle stance.")
+            bfight()
+        elif role == "mage":
+            input("It's your beloved tome!")
+            input("As you snap it open with one hand, your handwriting, scrawling from page to page, is revealed.")
+            input("As you see the guards rapidly approaching, you refresh yourself on your new spell, ready.")
+            #learn thorny vines
+            bfight()
+        elif role == "rogue":
+            input("It's your sharpened dagger and lockpicking tools!")
+            if nexta1 == "call" and a1lockfail == False:
+                input("Thank goodness you didn't have to use that hair pin.")
+                input("You'd be quite disappointed if it broke.")
+            elif nexta1 == "lock":
+                input("Thank goodness your hair pin worked!")
+                input("You'd be quite disappointed if it broke.")
+            elif a1lockfail == True:
+                input("...It's sad you got them back only after your hair pin broke.")
+                input("You quite liked it!")
+                input("However, it did serve its use as a backup lockpick. Ah well.")
+            input("Either way, you spin your dagger around, slotting perfectly in your hand as you crouch behind the wall.")
+            input("You're ready.")
+            bfight()
+    elif nextb1 == "run":
+        brun()
+    elif nextb1 == "grab":
+        haveItems = True
+        brun()
+    else:
+        input("Invalid option. Try again!")
+        nextb1 = b1choice()
+        officalb1 = b1choiceif()
+
 
 
 beginning()
@@ -322,9 +400,9 @@ nexta1 = beginningchoice()
 officala1 = beginningchoiceif()
 #successful choices: afirebolt, abash, acall, alock, ateleport
 #first choice split off
-#if officala1 == "afirebolt" or "abash":
-#    nextb1 = b1choice()
-#    officalb1 = b1choiceif()
+if officala1 == "afirebolt" or "abash":
+    nextb1 = b1choice()
+    officalb1 = b1choiceif()
 #if officala1 = "acall"
 #    nextb2 = b2choice()
 #    officalb2 = b2choiceif()
