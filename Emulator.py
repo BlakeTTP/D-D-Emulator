@@ -11,7 +11,7 @@ input("WELCOME, ADVENTURER, TO OUR REALM!!!\n (Whenever you don't need to enter 
 inputDebugMode = input("Turn on debug mode? Enter True or False: ")
 if inputDebugMode == "False":
     debugMode = False
-if inputDebugMode == "True":
+elif inputDebugMode == "True":
     debugMode = True
 if debugMode == True:
     inputAutoStatConfig = input("Put in stats automatically? Enter True or False: ")
@@ -56,6 +56,7 @@ def introStatConfig():
 
 char_stats = Stats()
 if autoStatConfig == False:
+    introStatConfig()
     char_stats.inputStats()
     
 if autoStatConfig == True:
@@ -93,7 +94,6 @@ def beginning(): #change pacing, add more description to environment
 choiceA1 = A1(char_stats, debugMode, role)
 
 if debugMode == False:
-    introStatConfig()
     beginning()
 nexta1 = choiceA1.beginningchoice()
 officala1 = choiceA1.beginningchoiceif()
