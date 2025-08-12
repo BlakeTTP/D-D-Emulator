@@ -2,9 +2,9 @@ from Dice import Stats
 from Dice import die
 
 class A1:
-    a1bashfail = False
-    a1lockfail = False
-    a1callfail = False
+    a1BashFail = False
+    a1LockFail = False
+    a1CallFail = False
     nexta1 = ""
     check = 0
     officala1 = ""
@@ -17,20 +17,20 @@ class A1:
     def beginningchoice(self):
         input("The door doesn't seem too sturdy. The lock also appears to be relatively weak...")
         input("You could try:")
-        if self.role == "warrior" and self.a1bashfail == False:
+        if self.role == "warrior" and self.a1BashFail == False:
             print("Bashing the door down - 'bash'")
         elif self.role == "mage":
             print("\nUsing magic to break out - 'cast' (This will use up one of your three spells)")
-        elif self.role == "rogue" and self.a1lockfail == False:
+        elif self.role == "rogue" and self.a1LockFail == False:
             print("Lockpicking the door - 'lock'")
-        if self.a1callfail == False:
+        if self.a1CallFail == False:
             print("Calling out for a guard to trick - 'call'")
-        if self.role == "warrior" and self.a1bashfail == True and self.a1callfail == True:
+        if self.role == "warrior" and self.a1BashFail == True and self.a1CallFail == True:
             input("You've already tried bashing the door, and tricking the guard didn't work.")
             input("You slump down in your cell, awaiting rescue.")
             input("GAME OVER! Try again!")
             exit()
-        if self.role == "rogue" and self.a1lockfail == True and self.a1callfail == True:
+        if self.role == "rogue" and self.a1LockFail == True and self.a1CallFail == True:
             input("You've already tried lockpicking the door, and tricking the guard didn't work.")
             input("You slump down in your cell, awaiting rescue.")
             input("GAME OVER! Try again!")
@@ -39,7 +39,7 @@ class A1:
         return self.nexta1
     def beginningchoiceif(self):
         #warrior
-        if self.nexta1 == "bash" and self.a1bashfail == False:
+        if self.nexta1 == "bash" and self.a1BashFail == False:
             input("You attempt to bash the door down! Strength check!")
             check = die.rollSTR(self.char_stats)
             if check >= 6:
@@ -48,10 +48,10 @@ class A1:
                 return "abash"
             elif check < 6:
                 input("You failed the check! Try something else!")
-                self.a1bashfail = True
+                self.a1BashFail = True
                 self.nexta1 = self.beginningchoice()
                 self.officala1 = self.beginningchoiceif() 
-        elif self.nexta1 == "bash" and self.a1bashfail == True:
+        elif self.nexta1 == "bash" and self.a1BashFail == True:
             print("You already failed that option! Try a different one.") 
             self.nexta1 = self.beginningchoice()
             self.officala1 = self.beginningchoiceif()
@@ -93,7 +93,7 @@ class A1:
                 self.nexta1 == self.beginningchoice()
                 self.officala1 = self.beginningchoiceif()
         #rogue
-        elif self.nexta1 == "lock" and self.a1lockfail == False:
+        elif self.nexta1 == "lock" and self.a1LockFail == False:
             input("You take out your hair pin, letting your hair down for a bit.")
             input("You crouch, checking if there's any guards watching you.")
             input("All clear.")
@@ -107,16 +107,16 @@ class A1:
                 input("As you attempt to push it in, you push too far in the wrong direction as you hear the wrong click.")
                 input("You retract the pin, now broken in two.")
                 input("You failed the check! Try something else!")
-                self.a1lockfail = True
+                self.a1LockFail = True
                 self.nexta1 == self.beginningchoice()
                 self.officala1 = self.beginningchoiceif()
-        elif self.nexta1 == "lock" and self.a1lockfail == True:
+        elif self.nexta1 == "lock" and self.a1LockFail == True:
             print("You already failed that option! Try a different one.") 
             self.nexta1 = self.beginningchoice()
             self.officala1 = self.beginningchoiceif()
 
         #general - call
-        elif self.nexta1 == "call" and self.a1callfail == False:
+        elif self.nexta1 == "call" and self.a1CallFail == False:
             print("You cry out, pretending to be scared.")
             input("Footsteps approach quickly...")
             input("A hulking guard looms over you, but any intimidation factor is lost alongside the crumbs falling from his face, as he takes another bite into his sandwich.")
@@ -146,10 +146,10 @@ class A1:
                 input("The guard turns around, and right as he's about to walk away, he stops.")
                 input("'Don't call me unless there's something real.' He continues walking away, along with the keys.")
                 input("You failed the check! Try something else.")
-                self.a1callfail = True
+                self.a1CallFail = True
                 self.nexta1 = self.beginningchoice()
                 self.officala1 = self.beginningchoiceif()
-        elif self.nexta1 == "call" and self.a1callfail == True:
+        elif self.nexta1 == "call" and self.a1CallFail == True:
             print("You already failed that option! Try a different one.") 
             self.nexta1 = self.beginningchoice()
             self.officala1 = self.beginningchoiceif()
@@ -157,7 +157,3 @@ class A1:
             input("Invalid option! Try again.")
             self.nexta1 = self.beginningchoice()
             self.officala1 = self.beginningchoiceif()
-
-
-
-        

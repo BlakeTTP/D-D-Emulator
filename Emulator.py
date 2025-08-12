@@ -1,7 +1,9 @@
 import random
-from EmulatorA1 import A1
 from Dice import Stats
 from Dice import die
+from EmulatorA1 import A1
+from EmulatorB1 import B1
+
 autoStatConfig = False
 
 #beginning part/decription of skills
@@ -88,90 +90,6 @@ def beginning(): #change pacing, add more description to environment
     input("By amateurs, too. As you pat yourself down, you find your stuff only a few meters away.")
     input("Behind bars, yes, but only a few meters. If- no, WHEN you get out, you could get your stuff back.")
 
-a1bashfail = False
-a1lockfail = False
-a1callfail = False
-check = 0
-phealth = char_stats.CON + 10
-haveItems = False
-
-#successful choices: afirebolt, abash
-def b1choice():
-    input("As the door breaking resounds through the empty air, you hear a pair of footsteps rapidly approaching.")
-    input("Guards are coming! You quickly glance around your surroundings, looking for options.")
-    input("Your stuff is but only a few meters away, but could take up precious seconds...")
-    print("You could:")
-    print("Grab your stuff and fight them! - 'fight'")
-    print("Try to run away! - 'run'")
-    print("Try to grab your stuff, and THEN run - 'grab'") #harder to pass check, but otherwise you don't get stuff as a variable later on
-    if role == "mage":
-        print("Cast a spell - 'cast'")
-    b1 = input("\nWhat do you want to do? Enter: ")
-    return b1
-
-bfightHaveAdvantage = False
-bfightHaveDisadvantage = False
-
-def bfight():
-    global phealth
-def brun():
-    global haveItems
-    global check
-    if haveItems == False:
-        input("You take a longing look towards your stuff, but decide it's not worth the risk.")
-        input("...It'd be pretty hard to go back for it later.")
-        input("Either way, you decide to run for it!")
-        input("Roll to evade the guards!")
-        check = die.rollDEX(char_stats)
-        if check > 5:
-            input("You start running, and find a room off the main path.")
-            input("Right as the guards round the corner,")
-    if haveItems == True:
-        input("You take a glance towards the connecting corridor, and grab your stuff!")
-
-def b1choiceif():
-    global check
-    global nextb1
-    global officalb1
-    global haveItems
-    if nextb1 == "fight":
-        input("You quickly lunge for your stuff, and take inventory of it.")
-        if role == "warrior":
-            input("It's your trusty sword and shield!")
-            input("You quickly wrap the sheath around your waist as you reveal your blade.")
-            input("As you see the guards rapidly approaching, you slide your shield onto your arm, ready in battle stance.")
-            bfight()
-        elif role == "mage":
-            input("It's your beloved tome!")
-            input("As you snap it open with one hand, your handwriting, scrawling from page to page, is revealed.")
-            input("As you see the guards rapidly approaching, you refresh yourself on your new spell, ready.")
-            #learn thorny vines
-            bfight()
-        elif role == "rogue":
-            input("It's your sharpened dagger and lockpicking tools!")
-            if nexta1 == "call" and A1.a1lockfail == False:
-                input("Thank goodness you didn't have to use that hair pin.")
-                input("You'd be quite disappointed if it broke.")
-            elif nexta1 == "lock":
-                input("Thank goodness your hair pin worked!")
-                input("You'd be quite disappointed if it broke.")
-            elif a1lockfail == True:
-                input("...It's sad you got them back only after your hair pin broke.")
-                input("You quite liked it!")
-                input("However, it did serve its use as a backup lockpick. Ah well.")
-            input("Either way, you spin your dagger around, slotting perfectly in your hand as you crouch behind the wall.")
-            input("You're ready.")
-            bfight()
-    elif nextb1 == "run":
-        brun()
-    elif nextb1 == "grab":
-        haveItems = True
-        brun()
-    else:
-        input("Invalid option. Try again!")
-        nextb1 = b1choice()
-        officalb1 = b1choiceif()
-
 choiceA1 = A1(char_stats, debugMode, role)
 
 if debugMode == False:
@@ -181,9 +99,11 @@ nexta1 = choiceA1.beginningchoice()
 officala1 = choiceA1.beginningchoiceif()
 #successful choices: afirebolt, abash, acall, alock, ateleport
 #first choice split off
+
 if officala1 == "afirebolt" or officala1 == "abash":
-    nextb1 = b1choice()
-    officalb1 = b1choiceif()
+    choiceB1 = B1(char_stats, debugMode, role, officala1, choiceA1.a1BashFail, choiceA1.a1LockFail, choiceA1.a1CallFail)
+    nextb1 = choiceB1.b1choice()
+    officalb1 = choiceB1.b1choiceif()
 #if officala1 = "acall"
 #    nextb2 = b2choice()
 #    officalb2 = b2choiceif()

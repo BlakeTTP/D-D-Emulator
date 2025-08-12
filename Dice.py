@@ -25,13 +25,7 @@ class Stats:
 
 
 class die:
-    
-    
-    
-    
-    
-    
-    
+
     #STR roll function
     def rollSTR(Emulator):
         roll = random.randint(1,20)
