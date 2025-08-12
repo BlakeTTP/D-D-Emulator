@@ -4,6 +4,17 @@ from Dice import die
 from EmulatorA1 import A1
 from EmulatorB1 import B1
 
+"""
+to-do:
+-add turn-based fight mechanics
+-rewrite a lot
+-add spell descriptions
+-add "you passed/failed the check!" to the end of description instead of beginning
+
+"""
+
+
+
 autoStatConfig = False
 
 #beginning part/decription of skills

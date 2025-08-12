@@ -48,7 +48,11 @@ class B1:
             self.check = die.rollDEX(self.char_stats)
             if self.check > 5:
                 input("You start running, and find a room off the main path.")
-                input("Right as the guards round the corner,")
+                input("Right as the guards round the corner, you slip in.")
+                input("You put a hand over your mouth, muffling any breathing.")
+                input("You don't dare close your eyes.")
+                input("...silence.")
+                input("It seems the coast is clear! (You passed the check!)")
         if self.haveItems == True:
             input("You take a glance towards the connecting corridor, and grab your stuff!")
 
