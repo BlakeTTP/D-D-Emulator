@@ -1,18 +1,31 @@
 import random
+from EmulatorA1 import A1
+from Dice import Stats
+from Dice import die
 
-#random.randint(1, 6)
-#random.randint(1, 20)
-#add debug mode
+autoStatConfig = False
+
 #beginning part/decription of skills
 input("WELCOME, ADVENTURER, TO OUR REALM!!!\n (Whenever you don't need to enter anything in, then just press ENTER to continue.)")
+inputDebugMode = input("Turn on debug mode? Enter True or False: ")
+if inputDebugMode == "False":
+    debugMode = False
+if inputDebugMode == "True":
+    debugMode = True
+if debugMode == True:
+    inputAutoStatConfig = input("Put in stats automatically? Enter True or False: ")
+    if inputAutoStatConfig == "True":
+        autoStatConfig = True
+
+
 input("Now, let's begin your journey.\n ")
 def rolechoice():
     global role
     print("\nChoose your role: warrior, mage or rogue.")
     role = input("Enter your role: ")
-    if role == "warrior" or "mage" or "rogue":
-        print("Great Choice!!!")
     #based on the roles
+    if role == "warrior" or role == "rogue" or role == "mage":
+        print("Great Choice!!!")
     if role=="warrior":
         print("You are a fearless Warrior, clad in heavy armor, with shield and sword in skilled hands.") #", marching toward the Fortress"
         print("(+1 to Strength)")
@@ -30,111 +43,33 @@ def rolechoice():
 
 role = rolechoice()
 
-
 #stat configuration
-input("First, to begin your story, we need to configure your stats.")
-input("Whatever class you choose already added +1 to one of them, which stacks with whatever you choose as your array.")
-input("While you can choose otherwise, it's recommended to have your main stat you use for your class be high for class specific options.")
-input("There's six to configure.")
-print("\nStrength(STR): Determines how physically strong you are.\nDexterity(DEX): Determines your flexibility, dodging, and sneaking ability.\nConstitution(CON): Determines how much your body can physically take, mainly health.")
-#input("Dexterity(DEX): Determines your flexibility, dodging, and sneaking ability.")
-#input("Constitution(CON): Determines how much your body can physically take, mainly health.")
-print("Wisdom(WIS): Determines how wise you are/how much conventional wisdom you have, or 'common sense'.\nIntelligence(INT): Determines how much you know, or 'book knowledge'.\nCharisma(CHA): Determines your social skills.")
-#input("Intelligence(INT): Determines how much you know, or 'book knowledge'.")
-#input("Charisma(CHA): Determines your social skills.")
-input("\nEverytime you make a decision, a die is rolled to see how effective it is.\nThese stats are modifiers that make you better or worse at certain skills.")
-#input("These stats are modifiers that make you better or worse at certain skills.")
-input("You possess a unique set of trait values to distribute among your skills.\nUse each value wisely, once assigned, it cannot be used again [-1, 0, 1, 1, 2, and 2.]")
-#input("That means you can use each number once, for each stat.")
-STR = int (input("\nEnter your strength: "))
-DEX = int (input("Enter your dexterity: "))
-CON = int (input("Enter your constitution: "))
-WIS = int (input("Enter your wisdom: "))
-INT = int (input("Enter your intelligence: "))
-CHA = int (input("Enter your charisma: "))
+def introStatConfig():
+    input("First, to begin your story, we need to configure your stats.")
+    input("Whatever class you choose already added +1 to one of them, which stacks with whatever you choose as your array.")
+    input("While you can choose otherwise, it's recommended to have your main stat you use for your class be high for class specific options.")
+    input("There's six to configure.")
+    print("\nStrength(STR): Determines how physically strong you are.\nDexterity(DEX): Determines your flexibility, dodging, and sneaking ability.\nConstitution(CON): Determines how much your body can physically take, mainly health.")
+    print("Wisdom(WIS): Determines how wise you are/how much conventional wisdom you have, or 'common sense'.\nIntelligence(INT): Determines how much you know, or 'book knowledge'.\nCharisma(CHA): Determines your social skills.")
+    input("\nEverytime you make a decision, a die is rolled to see how effective it is.\nThese stats are modifiers that make you better or worse at certain skills.")
+    input("You possess a unique set of trait values to distribute among your skills.\nUse each value wisely, once assigned, it cannot be used again [-1, 0, 1, 1, 2, and 2.]")
 
+char_stats = Stats()
+if autoStatConfig == False:
+    char_stats.inputStats()
+    
+if autoStatConfig == True:
+    char_stats.autoStats()
+    
 #class based addition to stats
-if role == "warrior":
-    STR = STR+1
-elif role == "mage":
-    INT = INT+1
-elif role == "rogue":
-    DEX = DEX+1
-
-#STR roll function
-def rollSTR():
-    roll = random.randint(1,20)
-    print("You rolled a "+str(roll)+"!")
-    check = roll+STR
-    if STR > 0:
-        print("+"+str(STR)+" = "+str(check)+" overall!")
-        return check
-    if STR < 0:
-        print(str(STR)+" = "+str(check)+" overall!")
-        return check
-
-#DEX roll function
-def rollDEX():
-    roll = random.randint(1,20)
-    print("You rolled a "+str(roll)+"!")
-    check = roll+DEX
-    if DEX > 0:
-        print("+"+str(DEX)+" = "+str(check)+" overall!")
-        return check
-    if DEX < 0:
-        print(str(DEX)+" = "+str(check)+" overall!")
-        return check
-    
-#CON roll function
-def rollCON():
-    roll = random.randint(1,20)
-    print("You rolled a "+str(roll)+"!")
-    check = roll+CON
-    if CON > 0:
-        print("+"+str(CON)+" = "+str(check)+" overall!")
-        return check
-    if CON < 0:
-        print(str(CON)+" = "+str(check)+" overall!")
-        return check
-
-#WIS roll function
-def rollWIS():
-    roll = random.randint(1,20)
-    print("You rolled a "+str(roll)+"!")
-    check = roll+WIS
-    if WIS > 0:
-        print("+"+str(WIS)+" = "+str(check)+" overall!")
-        return check
-    if WIS < 0:
-        print(str(WIS)+" = "+str(check)+" overall!")
-        return check
-    
-#INT roll function
-def rollINT():
-    roll = random.randint(1,20)
-    print("You rolled a "+str(roll)+"!")
-    check = roll+INT
-    if INT > 0:
-        print("+"+str(INT)+" = "+str(check)+" overall!")
-        return check
-    if INT < 0:
-        print(str(INT)+" = "+str(check)+" overall!")
-        return check
-
-#CHA roll function
-def rollCHA():
-    roll = random.randint(1,20)
-    print("You rolled a "+str(roll)+"!")
-    check = roll+CHA
-    if CHA > 0:
-        print("+"+str(CHA)+" = "+str(check)+" overall!")
-        return check
-    if CHA < 0:
-        print(str(CHA)+" = "+str(check)+" overall!")
-        return check
-    
+    if role == "warrior":
+        char_stats.STR = char_stats.STR+1
+    elif role == "mage":
+        char_stats.INT = char_stats.INT+1
+    elif role == "rogue":
+        char_stats.DEX = char_stats.DEX+1
 #beginning
-def beginning():
+def beginning(): #change pacing, add more description to environment
     input("You find yourself lying on the ground, and the first thing you're aware of is the migraine blooming through your skull.")
     input("What, did someone hit y- oh. Someone did.")
     input("First things first.")
@@ -159,7 +94,7 @@ a1bashfail = False
 a1lockfail = False
 a1callfail = False
 check = 0
-phealth = CON + 10
+phealth = char_stats.CON + 10
 haveItems = False
 
 #beginning choice
@@ -169,7 +104,7 @@ def beginningchoice():
     if role == "warrior" and a1bashfail == False:
         print("Bashing the door down - 'bash'")
     elif role == "mage":
-         print("\nUsing magic to grab your tome - 'cast' (This will use up one of your three spells)")
+         print("\nUsing magic to break out - 'cast' (This will use up one of your three spells)")
     elif role == "rogue" and a1lockfail == False:
         print("Lockpicking the door - 'lock'")
     if a1callfail == False:
@@ -199,7 +134,7 @@ def beginningchoiceif():
 
     if nexta1 == "bash" and a1bashfail == False:
         input("You attempt to bash the door down! Strength check!")
-        check = rollSTR()
+        check = die.rollSTR(char_stats)
         if check >= 6:
             input("You passed the check! The door's hinges creak loudly as the rotting wood crashes down.")
             input("You confidently step outside, resoundly stepping on the shards of the door.")
@@ -215,7 +150,7 @@ def beginningchoiceif():
         officala1 = beginningchoiceif()
               
     #mage
-    elif nexta1 == "cast":
+    elif nexta1 == "cast": #add description for spells
         spells = ["Firebolt", "Frost Shield", "Teleport Spark"]
         used_spells = []
         print("Choose a spell to cast:")
@@ -257,7 +192,7 @@ def beginningchoiceif():
         input("All clear.")
         input("You attempt to pick the lock...")
         print("Dexterity check!!!")
-        check = rollDEX()
+        check = die.rollDEX(char_stats)
         if check >= 7:
             input("Success! The lock clicks open. You silently slip out of your cell.")
             return "alock"
@@ -282,7 +217,7 @@ def beginningchoiceif():
         input("(What does he mean by THAT?)")
         input("Well, anyway.")
         input("Roll to attempt to trick the guard! Charisma check!")
-        check = rollCHA()
+        check = die.rollCHA(char_stats)
         if check >= 6:
             input("You passed the check! You're pretty sure he thinks you're 'defenseless' as a 'damsel in distress'.")
             input("You lean into the act. 'Oh no, I don't know what to do anymore! The wound on my leg might get infected, if only I could see a doctor!'")
@@ -319,7 +254,7 @@ def beginningchoiceif():
 #successful choices: afirebolt, abash
 def b1choice():
     input("As the door breaking resounds through the empty air, you hear a pair of footsteps rapidly approaching.")
-    input("Guards are coming! You quickly glance your surroundings, looking for options.")
+    input("Guards are coming! You quickly glance around your surroundings, looking for options.")
     input("Your stuff is but only a few meters away, but could take up precious seconds...")
     print("You could:")
     print("Grab your stuff and fight them! - 'fight'")
@@ -343,7 +278,7 @@ def brun():
         input("...It'd be pretty hard to go back for it later.")
         input("Either way, you decide to run for it!")
         input("Roll to evade the guards!")
-        check = rollDEX()
+        check = die.rollDEX(char_stats)
         if check > 5:
             input("You start running, and find a room off the main path.")
             input("Right as the guards round the corner,")
@@ -393,14 +328,14 @@ def b1choiceif():
         nextb1 = b1choice()
         officalb1 = b1choiceif()
 
-
-
-beginning()
+if debugMode == False:
+    introStatConfig()
+    beginning()
 nexta1 = beginningchoice()
 officala1 = beginningchoiceif()
 #successful choices: afirebolt, abash, acall, alock, ateleport
 #first choice split off
-if officala1 == "afirebolt" or "abash":
+if officala1 == "afirebolt" or officala1 == "abash":
     nextb1 = b1choice()
     officalb1 = b1choiceif()
 #if officala1 = "acall"
