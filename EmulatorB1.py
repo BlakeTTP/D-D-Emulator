@@ -1,7 +1,7 @@
 from Dice import Stats
 from Dice import die
 from EmulatorA1 import A1
-from battle import Player, Enemy
+from Battle import Player, Enemy, battle
 class B1:
     def __init__(self, char_stats, debugMode, role, officalA1, a1BashFail, a1LockFail, a1CallFail):
         self.char_stats = char_stats
@@ -88,6 +88,8 @@ class B1:
                 #self.bfight()   #caalling the battle code
                 player = Player(self.role)
                 enemy = Enemy()
+                while player.stamina > 0 and enemy.stamina > 0:
+                    battle(player,enemy)
         elif self.nextb1 == "run":
             self.brun()
         elif self.nextb1 == "grab":
