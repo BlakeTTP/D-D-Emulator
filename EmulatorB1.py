@@ -86,7 +86,7 @@ class B1:
                 input("Either way, you spin your dagger around, slotting perfectly in your hand as you crouch behind the wall.")
                 input("You're ready.")
                 #self.bfight()   #caalling the battle code
-                player = Player(self.role)
+                player = Player(role)
                 enemy = Enemy()
                 while player.stamina > 0 and enemy.stamina > 0:
                     battle(player,enemy)
