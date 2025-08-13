@@ -1,5 +1,5 @@
 import random
-from colorama import Fore, Style
+
 class Stats:
     role: str
     STR: int
