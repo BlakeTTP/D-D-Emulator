@@ -31,4 +31,28 @@ class Enemy :
     self.defence = 4
 
 
+def battle(player,enemy):
+   #enemy stamina
+    damage_to_enemy = player.attack - enemy.defence
+    if damage_to_enemy<0:
+      damage_to_enemy =0 
+    enemy.stamina -= damage_to_enemy 
+    print(f"{player.name} attacks {enemy.name} for {damage_to_enemy} damage!")
+    print(f"{enemy.name} now has {enemy.stamina}stamina left")
+
+  #player stamina
+    damage_to_player = enemy.attack - player.defence
+    if damage_to_player<0:
+      damage_to_player =0 
+    player.stamina -= damage_to_player 
+    print(f"{enemy.name} attacks {player.name} for {damage_to_player} damage!")
+    print(f"{player.name} now has {player.stamina}stamina left")
+
+    
+    
+    
+
+
+
+
     
