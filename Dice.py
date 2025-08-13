@@ -1,4 +1,5 @@
 import random
+from colorama import Fore, Style
 class Stats:
     role: str
     STR: int
@@ -9,12 +10,12 @@ class Stats:
     CHA: int
 
     def inputStats(self):
-        self.STR = int (input("\nEnter your strength: "))
-        self.DEX = int (input("Enter your dexterity: "))
-        self.CON = int (input("Enter your constitution: "))
+        self.STR = int (input(Fore.RED+"\nEnter your strength: "+ Style.RESET_ALL ))
+        self.DEX = int (input(Fore.GREEN+ "Enter your dexterity: "+Style.RESET_ALL))
+        self.CON = int (input(Fore.PURPLE+ "Enter your constitution: "+Style.RESET_ALL))
         self.WIS = int (input("Enter your wisdom: "))
-        self.INT = int (input("Enter your intelligence: "))
-        self.CHA = int (input("Enter your charisma: "))
+        self.INT = int (input(Fore.ORANGE+"Enter your intelligence: "+Style.RESET_ALL))
+        self.CHA = int (input(Fore.BLUE+ "Enter your charisma: "+Style.RESET_ALL))
     def autoStats(self):
         self.STR = 1
         self.DEX = 1
