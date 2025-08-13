@@ -1,6 +1,7 @@
 from Dice import Stats
 from Dice import die
 from EmulatorA1 import A1
+from battle import Player, Enemy
 class B1:
     def __init__(self, char_stats, debugMode, role, officalA1, a1BashFail, a1LockFail, a1CallFail):
         self.char_stats = char_stats
@@ -37,7 +38,7 @@ class B1:
             print("Cast a spell - 'cast'")
         self.nextb1 = input("\nWhat do you want to do? Enter: ")
         return self.nextb1
-    def bfight(self):
+   # def bfight(self):
         #pasting the battle code here
     def brun(self):
         if self.haveItems == False:
@@ -84,7 +85,9 @@ class B1:
                     input("However, it did serve its use as a backup lockpick. Ah well.")
                 input("Either way, you spin your dagger around, slotting perfectly in your hand as you crouch behind the wall.")
                 input("You're ready.")
-                self.bfight()   #caalling the battle code
+                #self.bfight()   #caalling the battle code
+                player = Player(self.role)
+                enemy = Enemy()
         elif self.nextb1 == "run":
             self.brun()
         elif self.nextb1 == "grab":
@@ -101,57 +104,6 @@ class B1:
 
 
 
-"""
-import random
-from Dice import Stats
-from Dice import die
-from EmulatorA1 import A1
-from EmulatorB1 import B1
-class Player:
-  def __init__(self,role):
-    self.role = role
-    self.skills= []
-    if role == "warrior":
-      self.name = "Warrior of Light"
-      self.stamina= 150
-      self.attack = 15
-      self.defence= 10
-    elif role == "mage":
-      self.name = "Mage of Flames"
-      self.stamina = 120
-      self.attack = 12
-      self.defence = 8
-    elif role == "rogue"
-      self.name= "Rogue Of Shadow"
-      self.stamina= 100
-      self.attack= 10
-      self.defence= 6
 
-class Enemy :
-  def __init__(self):
-    self.name= "Dragon"
-    self.stamina= 110
-    self.attack= 9
-    self.defence = 4
-
-def battle(player,enemy):
-    damage_to_enemy = player.attack - enemy.defence
-    if damage_to_enemy<0:
-      damage_to_enemy =0 
-    enemy.stamina -= damage_to_enemy 
-    print(f"{player.name} attacks {enemy.name} for {damage_to_enemy} damage!")
-    print(f"{enemy.name} now has {enemy.stamina}stamina left")
-   
-    damage_to_player = enemy.attack - player.defence
-    if damage_to_player<0:
-      damage_to_player =0 
-    player.stamina -= damage_to_player 
-    print(f"{enemy.name} attacks {player.name} for {damage_to_player} damage!")
-    print(f"{player.name} now has {player.stamina}stamina left")
-"""
-    
-    
-    
-
-
+     
     
