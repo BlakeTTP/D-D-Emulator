@@ -1,8 +1,3 @@
-import random
-from Dice import Stats
-from Dice import die
-from EmulatorA1 import A1
-from EmulatorB1 import B1
 class Player:
   def __init__(self,role):
     self.role = role
@@ -17,7 +12,7 @@ class Player:
       self.stamina = 120
       self.attack = 12
       self.defence = 8
-    elif role == "rogue"
+    elif role == "rogue":
       self.name= "Rogue Of Shadow"
       self.stamina= 100
       self.attack= 10
