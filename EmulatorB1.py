@@ -38,7 +38,7 @@ class B1:
         self.nextb1 = input("\nWhat do you want to do? Enter: ")
         return self.nextb1
     def bfight(self):
-        pass
+        #pasting the battle code here
     def brun(self):
         if self.haveItems == False:
             input("You take a longing look towards your stuff, but decide it's not worth the risk.")
@@ -84,7 +84,7 @@ class B1:
                     input("However, it did serve its use as a backup lockpick. Ah well.")
                 input("Either way, you spin your dagger around, slotting perfectly in your hand as you crouch behind the wall.")
                 input("You're ready.")
-                self.bfight()
+                self.bfight()   #caalling the battle code
         elif self.nextb1 == "run":
             self.brun()
         elif self.nextb1 == "grab":
