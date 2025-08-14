@@ -3,6 +3,7 @@ from Dice import Stats
 from Dice import die
 from EmulatorA1 import A1
 from EmulatorB1 import B1
+from EmulatorB2 import B2
 
 """
 to-do:
@@ -115,6 +116,7 @@ if officala1 == "afirebolt" or officala1 == "abash":
     choiceB1 = B1(char_stats, debugMode, role, officala1, choiceA1.a1BashFail, choiceA1.a1LockFail, choiceA1.a1CallFail)
     nextb1 = choiceB1.b1choice()
     officalb1 = choiceB1.b1choiceif()
-#if officala1 = "acall"
-#    nextb2 = b2choice()
-#    officalb2 = b2choiceif()
+if officala1 == "acall":
+    choiceB2 = B2(char_stats, debugMode, role, choiceA1.a1BashFail, choiceA1.a1LockFail, choiceA1.a1CallFail)
+    nextb2 = choiceB1.b2choice()
+    officalb2 = choiceB1.b2choiceif()

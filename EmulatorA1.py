@@ -141,6 +141,8 @@ class A1:
                     input("The sandwich remains disgarded as you step out the cell.")
                 if self.debugMode == True:
                     input("You passed the check! Guard is now downed.")
+                    input("add DESCRIPTION of grabbing stuff, etc, B2")
+
                 return "acall"
             elif check < 6:
                 if self.debugMode == False:

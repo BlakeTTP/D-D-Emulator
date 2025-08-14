@@ -99,13 +99,3 @@ class B1:
             input("Invalid option. Try again!")
             self.nextb1 = self.b1choice()
             self.officalb1 = self.b1choiceif()
-
-
-
-
-
-
-
-
-     
-    
