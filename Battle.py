@@ -1,9 +1,6 @@
 import random
 from Dice import Stats
 from Dice import die
-#from EmulatorA1 import A1
-#from EmulatorB1 import B1
-
 class Player:
   def __init__(self,role):
     self.role = role
