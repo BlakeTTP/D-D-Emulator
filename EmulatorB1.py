@@ -88,6 +88,7 @@ class B1:
                 #self.bfight()   #caalling the battle code
                 player = Player(role)
                 enemy = Enemy()
+                print(enemy.name)
                 while player.stamina > 0 and enemy.stamina > 0:
                     battle(player,enemy)
         elif self.nextb1 == "run":
