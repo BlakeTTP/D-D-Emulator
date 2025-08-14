@@ -19,7 +19,7 @@ to-do:
 autoStatConfig = False
 
 #beginning part/decription of skills
-input("WELCOME, ADVENTURER, TO OUR REALM!!!\n (Whenever you don't need to enter anything in, then just press ENTER to continue.)")
+input("WELCOME 🙏, ADVENTURER, TO OUR REALM!!!\n (Whenever you don't need to enter anything in, then just press ENTER to continue.)")
 inputDebugMode = input("Turn on debug mode? Enter True or False: ")
 if inputDebugMode == "False":
     debugMode = False
