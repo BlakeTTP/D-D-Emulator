@@ -43,7 +43,7 @@ input("Now, let's begin your journey.\n ")
 def rolechoice():
     global role
     print("\nChoose your role: warrior, mage or rogue.")
-    role = input("Enter your role: ")
+    role = input("Enter your role: ").strip().lower() 
     #based on the roles
    # if role == "warrior" or role == "rogue" or role == "mage":
         
