@@ -21,9 +21,9 @@ autoStatConfig = False
 #beginning part/decription of skills
 input("WELCOME 🙏, ADVENTURER, TO OUR REALM!!!\n (Whenever you don't need to enter anything in, then just press ENTER to continue.)")
 inputDebugMode = input("Turn on debug mode? Enter True or False: ")
-if inputDebugMode == "False":
+if inputDebugMode.lower() == "False":
     debugMode = False
-elif inputDebugMode == "True":
+elif inputDebugMode.lower == "True":
     debugMode = True
 if debugMode == True:
     inputAutoStatConfig = input("Put in stats automatically? Enter True or False: ")
@@ -36,16 +36,19 @@ def rolechoice():
     print("\nChoose your role: warrior, mage or rogue.")
     role = input("Enter your role: ")
     #based on the roles
-    if role == "warrior" or role == "rogue" or role == "mage":
-        print("Great Choice!!!")
+   # if role == "warrior" or role == "rogue" or role == "mage":
+        
     if role=="warrior":
+        print("Great Choice!!!")
         print("You are a fearless Warrior, clad in heavy armor, with shield and sword in skilled hands.") #", marching toward the Fortress"
         print("(+1 to Strength)")
     elif role=="mage":
+        print("Great Choice!!!")
         #print("You are a master Thief, who is quick, clever, and silent, with hands skilled in locks and a mind sharp as any blade.")
         print("You are a Mage, an apprentice learning the art of the magic that flows through your world, knowledge heavy as your tome.")
         print("(+1 to Intelligence)")
     elif role=="rogue":
+        print("Great Choice!!!")
         print("You are a Rogue, who is silent but deadly with a sharp dagger no matter where you stand, and always four steps ahead.")
         print("(+1 to Dexterity)")
     else:
