@@ -20,15 +20,16 @@ class Player:
       self.stamina= 100
       self.attack= 10
       self.defence= 6
-
+#adding one more enemy 
 class Enemy :
   def __init__(self):
-    self.name= "Dragon"
-    self.stamina= 110
-    self.attack= 9
-    self.defence = 4
-
-
+    enemies: [{"name": "Dragon","stamina": 110,"attack":9,"defence":4},{"name": "Troll","stamina": 100,"attack":8,"defence":5}]
+    chosen = random.choice(enemies)
+    self.name = chosen["name"]
+    self.stamina= chosen["stamina"]
+    self.attack= chosen["attack"]
+    self.defence= chosen["defence"]
+    
 def battle(player,enemy):
    #enemy stamina
     damage_to_enemy = player.attack - enemy.defence
