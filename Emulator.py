@@ -19,10 +19,10 @@ to-do:
 autoStatConfig = False
 
 #beginning part/decription of skills
-input("WELCOME 🙏, ADVENTURER, TO OUR REALM!!!\n (Whenever you don't need to enter anything in, then just press ENTER to continue.)")
+input("\033[36mWELCOME 🙏, ADVENTURER, TO OUR REALM!!!\033[0m\n (Whenever you don't need to enter anything in, then just press ENTER to continue.)")
 
 while True:
-     inputDebugMode = input("Turn on debug mode? Enter True or False: ")
+     inputDebugMode = input("Turn on debug mode? Enter \033[32mTrue\033[0m or \033[31mFalse\033[0m: ")
      if inputDebugMode.lower() == "False":
          debugMode = False
          break
