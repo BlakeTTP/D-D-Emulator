@@ -20,15 +20,24 @@ autoStatConfig = False
 
 #beginning part/decription of skills
 input("WELCOME 🙏, ADVENTURER, TO OUR REALM!!!\n (Whenever you don't need to enter anything in, then just press ENTER to continue.)")
-inputDebugMode = input("Turn on debug mode? Enter True or False: ")
-if inputDebugMode.lower() == "False":
-    debugMode = False
-elif inputDebugMode.lower == "True":
-    debugMode = True
-if debugMode == True:
-    inputAutoStatConfig = input("Put in stats automatically? Enter True or False: ")
-    if inputAutoStatConfig == "True":
-        autoStatConfig = True
+
+while True:
+     inputDebugMode = input("Turn on debug mode? Enter True or False: ")
+     if inputDebugMode.lower() == "False":
+         debugMode = False
+         break
+     elif inputDebugMode.lower == "True":
+         debugMode = True
+         break
+     else:
+         print("Invalid input. Please enter true or false!!")
+         
+if debugMode:
+    while True:
+          inputAutoStatConfig = input("Put in stats automatically? Enter True or False: ")
+          if inputAutoStatConfig.lower() == "true":
+             autoStatConfig = True
+             break
 input("Now, let's begin your journey.\n ")
 
 def rolechoice():
