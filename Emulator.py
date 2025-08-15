@@ -23,21 +23,25 @@ input("\033[36mWELCOME 🙏, ADVENTURER, TO OUR REALM!!!\033[0m\n (Whenever you 
 
 while True:
      inputDebugMode = input("Turn on debug mode? Enter \033[32mTrue\033[0m or \033[31mFalse\033[0m: ")
-     if inputDebugMode.lower() == "False":
+     if inputDebugMode.lower() == "false":
          debugMode = False
          break
-     elif inputDebugMode.lower == "True":
+     elif inputDebugMode.lower() == "true":
          debugMode = True
          break
      else:
          print("Invalid input. Please enter true or false!!")
-         
-if debugMode:
-    while True:
-          inputAutoStatConfig = input("Put in stats automatically? Enter True or False: ")
-          if inputAutoStatConfig.lower() == "true":
-             autoStatConfig = True
-             break
+while True:         
+    if debugMode:
+        inputAutoStatConfig = input("Put in stats automatically? Enter True or False: ")
+        if inputAutoStatConfig.lower() == "true":
+            autoStatConfig = True
+            break
+        elif inputAutoStatConfig.lower() == "false":
+            autoStatConfig = False
+            break
+        else:
+            print("Invalid input. Please enter true or false!!")
 input("Now, let's begin your journey.\n ")
 
 def rolechoice():
@@ -120,15 +124,15 @@ choiceA1 = A1(char_stats, debugMode, role)
 if debugMode == False:
     beginning()
 nexta1 = choiceA1.beginningchoice()
-officala1 = choiceA1.beginningchoiceif()
+officiala1 = choiceA1.beginningchoiceif()
 #successful choices: afirebolt, abash, acall, alock, ateleport
 #first choice split off
 
-if officala1 == "afirebolt" or officala1 == "abash":
-    choiceB1 = B1(char_stats, debugMode, role, officala1, choiceA1.a1BashFail, choiceA1.a1LockFail, choiceA1.a1CallFail)
+if officiala1 == "afirebolt" or officiala1 == "abash":
+    choiceB1 = B1(char_stats, debugMode, role, officiala1, choiceA1.a1BashFail, choiceA1.a1LockFail, choiceA1.a1CallFail)
     nextb1 = choiceB1.b1choice()
-    officalb1 = choiceB1.b1choiceif()
-if officala1 == "acall":
-    choiceB2 = B2(char_stats, debugMode, role, choiceA1.a1BashFail, choiceA1.a1LockFail, choiceA1.a1CallFail)
-    nextb2 = choiceB1.b2choice()
-    officalb2 = choiceB1.b2choiceif()
+    officialb1 = choiceB1.b1choiceif()
+if officiala1 == "acall" or officiala1 == "alock" or officiala1 == "ateleport":
+    choiceB2 = B2(char_stats, debugMode, role, officiala1, choiceA1.a1BashFail, choiceA1.a1LockFail, choiceA1.a1CallFail)
+    nextb2 = choiceB2.b2choice()
+    officialb2 = choiceB2.b2choiceif()

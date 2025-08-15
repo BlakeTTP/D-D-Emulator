@@ -7,7 +7,7 @@ class A1:
     a1CallFail = False
     nexta1 = ""
     check = 0
-    officala1 = ""
+    officiala1 = ""
     def __init__(self, char_stats, debugMode, role):
         self.char_stats = char_stats
         self.debugMode = debugMode
@@ -50,11 +50,11 @@ class A1:
                 input("You failed the check! Try something else!")
                 self.a1BashFail = True
                 self.nexta1 = self.beginningchoice()
-                self.officala1 = self.beginningchoiceif() 
+                self.officiala1 = self.beginningchoiceif() 
         elif self.nexta1 == "bash" and self.a1BashFail == True:
             print("You already failed that option! Try a different one.") 
             self.nexta1 = self.beginningchoice()
-            self.officala1 = self.beginningchoiceif()
+            self.officiala1 = self.beginningchoiceif()
                 
         #mage
         elif self.nexta1 == "cast": #add description for spells
@@ -80,7 +80,7 @@ class A1:
                 input("Try again!")
                 #print(used_spells) Btw the used spells doesn't work for some weird reason - to do later
                 self.nexta1 == self.beginningchoice()
-                self.officala1 = self.beginningchoiceif()
+                self.officiala1 = self.beginningchoiceif()
 
             elif spell_choice == "3" or spell_choice == "teleport spark" and "Teleport Spark" not in used_spells:
                 used_spells.append("Teleport Spark")
@@ -91,7 +91,7 @@ class A1:
                 print("Invalid choice or you already used a spell.")
                 input("Try again!")
                 self.nexta1 == self.beginningchoice()
-                self.officala1 = self.beginningchoiceif()
+                self.officiala1 = self.beginningchoiceif()
         #rogue
         elif self.nexta1 == "lock" and self.a1LockFail == False:
             input("You take out your hair pin, letting your hair down for a bit.")
@@ -109,11 +109,11 @@ class A1:
                 input("You failed the check! Try something else!")
                 self.a1LockFail = True
                 self.nexta1 == self.beginningchoice()
-                self.officala1 = self.beginningchoiceif()
+                self.officiala1 = self.beginningchoiceif()
         elif self.nexta1 == "lock" and self.a1LockFail == True:
             print("You already failed that option! Try a different one.") 
             self.nexta1 = self.beginningchoice()
-            self.officala1 = self.beginningchoiceif()
+            self.officiala1 = self.beginningchoiceif()
 
         #general - call
         elif self.nexta1 == "call" and self.a1CallFail == False:
@@ -154,12 +154,12 @@ class A1:
                 input("You failed the check! Try something else.")
                 self.a1CallFail = True
                 self.nexta1 = self.beginningchoice()
-                self.officala1 = self.beginningchoiceif()
+                self.officiala1 = self.beginningchoiceif()
         elif self.nexta1 == "call" and self.a1CallFail == True:
             print("You already failed that option! Try a different one.") 
             self.nexta1 = self.beginningchoice()
-            self.officala1 = self.beginningchoiceif()
+            self.officiala1 = self.beginningchoiceif()
         else:
             input("Invalid option! Try again.")
             self.nexta1 = self.beginningchoice()
-            self.officala1 = self.beginningchoiceif()
+            self.officiala1 = self.beginningchoiceif()
