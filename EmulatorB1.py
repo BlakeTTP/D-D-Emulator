@@ -29,13 +29,11 @@ class B1:
         #a1CallFail = self.a1CallFail
         input("As the door breaking resounds through the empty air, you hear a pair of footsteps rapidly approaching.")
         input("Guards are coming! You quickly glance around your surroundings, looking for options.")
-        input("Your stuff is but only a few meters away, but could take up precious seconds...")
+        input("Your stuff is only but a few meters away, but could take up precious seconds...")
         print("You could:")
         print("Grab your stuff and fight them! - 'fight'")
         print("Try to run away! - 'run'")
         print("Try to grab your stuff, and THEN run - 'grab'") #harder to pass check, but otherwise you don't get stuff as a variable later on
-        if self.role == "mage":
-            print("Cast a spell - 'cast'")
         self.nextb1 = input("\nWhat do you want to do? Enter: ")
         return self.nextb1
    # def bfight(self):

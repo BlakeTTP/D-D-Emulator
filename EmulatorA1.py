@@ -127,7 +127,7 @@ class A1:
             check = die.rollCHA(self.char_stats)
             if check >= 6:
                 if self.debugMode == False:
-                    input("You passed the check! You're pretty sure he thinks you're 'defenseless' as a 'damsel in distress'.")
+                    input("You're pretty sure he thinks you're 'defenseless' as a 'damsel in distress'.")
                     input("You lean into the act. 'Oh no, I don't know what to do anymore! The wound on my leg might get infected, if only I could see a doctor!'")
                     input("The guard rolls his eyes. 'What, do you want someone to look at it or something?")
                     print("It's not like you're going to die before the hero gets here.'")
@@ -139,6 +139,7 @@ class A1:
                     input("Got them!")
                     input("As you kick the guard one final time, he falls unconcious as you brush yourself off. Man. You can't believe how easy that was.")
                     input("The sandwich remains disgarded as you step out the cell.")
+                    input("You passed the check!")
                 if self.debugMode == True:
                     input("You passed the check! Guard is now downed.")
                     input("add DESCRIPTION of grabbing stuff, etc, B2")

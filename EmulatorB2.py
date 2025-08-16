@@ -22,7 +22,22 @@ class B2:
         self.hasLootedGuard = False
 
     def b2choice(self):
-        input("Temporary text! Mention grabbing the tools. Options:")
+        if self.debugMode == False:
+            input("Treading lightly, you slip unnoticed up to the table across from your cell.")
+            if self.role == "warrior":
+                input("Your hands glide over your sword and shield.")
+                input("You slide the art of metallurgy into its sheath and protective gear against your arm, back where it belongs.")
+            if self.role == "mage":
+                input("Your hands glide over your tome, worn and aged with every flicker from your pens.")
+                input("You slot the tome back against your body, familiar weight settling against you.")
+            if self.role == "rogue":
+                input("Your hands glide over your lockpicking tools and dagger.")
+                input("Dagger held curved perfectly to suit your hand, you slot the tools against your body, back where they belong.")
+            input("Despite it being only a short span of time since being parted from your belongings, you can say with certainty- ")
+            input("You missed this.")
+            input("Now that you’re reunited though, you have bigger priorities.")
+            input("You look around the room surrounding your cell.")
+        input("You could try to: ")
         print("\nLeave the room: 'leave'")
         if self.hasLootedRoom == False:
             print("Look around for loot - 'loot'")
