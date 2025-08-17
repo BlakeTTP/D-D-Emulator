@@ -29,11 +29,13 @@ class B1:
         #a1CallFail = self.a1CallFail
         input("As the door breaking resounds through the empty air, you hear a pair of footsteps rapidly approaching.")
         input("Guards are coming! You quickly glance around your surroundings, looking for options.")
-        input("Your stuff is only but a few meters away, but could take up precious seconds...")
+        input("Your stuff is but only a few meters away, but could take up precious seconds...")
         print("You could:")
         print("Grab your stuff and fight them! - 'fight'")
         print("Try to run away! - 'run'")
         print("Try to grab your stuff, and THEN run - 'grab'") #harder to pass check, but otherwise you don't get stuff as a variable later on
+        if self.role == "mage":
+            print("Cast a spell - 'cast'")
         self.nextb1 = input("\nWhat do you want to do? Enter: ")
         return self.nextb1
    # def bfight(self):
@@ -62,13 +64,19 @@ class B1:
                 input("It's your trusty sword and shield!")
                 input("You quickly wrap the sheath around your waist as you reveal your blade.")
                 input("As you see the guards rapidly approaching, you slide your shield onto your arm, ready in battle stance.")
-                self.bfight()
+                #self.bfight()
+                player = Player(self.role)
+                enemies = [Enemy("Guard 1",60,8,4), Enemy("Guard 2", 60, 8, 4)]
+                battle(player, enemies)
+                
             elif self.role == "mage":
                 input("It's your beloved tome!")
                 input("As you snap it open with one hand, your handwriting, scrawling from page to page, is revealed.")
                 input("As you see the guards rapidly approaching, you refresh yourself on your new spell, ready.")
-                #learn thorny vines
-                self.bfight()
+                player = Player(self.role)
+                enemies = [Enemy("Guard 1", 50, 7, 3), Enemy("Guard 2", 70, 9, 4)]
+                battle(player, enemies)
+                
             elif self.role == "rogue":
                 input("It's your sharpened dagger and lockpicking tools!")
                 if self.officialA1 == "call" and self.a1LockFail == False:
@@ -84,11 +92,10 @@ class B1:
                 input("Either way, you spin your dagger around, slotting perfectly in your hand as you crouch behind the wall.")
                 input("You're ready.")
                 #self.bfight()   #caalling the battle code
-                player = Player(role)
-                enemy = Enemy()
-                print(enemy.name)
-                while player.stamina > 0 and enemy.stamina > 0:
-                    battle(player,enemy)
+                player = Player(self.role)
+                enemies = [Enemy("Guard 1", 55, 6, 3), Enemy("Guard 2", 55, 6, 3)]
+                battle(player, enemies)
+
         elif self.nextb1 == "run":
             self.brun()
         elif self.nextb1 == "grab":
@@ -98,3 +105,5 @@ class B1:
             input("Invalid option. Try again!")
             self.nextb1 = self.b1choice()
             self.officalb1 = self.b1choiceif()
+
+
