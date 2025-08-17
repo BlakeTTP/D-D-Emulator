@@ -12,11 +12,14 @@ class A1:
         self.char_stats = char_stats
         self.debugMode = debugMode
         self.role = role
+        self.checkedYet = False
     
     #beginning choice
     def beginningchoice(self):
         input("The door doesn't seem too sturdy. The lock also appears to be relatively weak...")
         input("You could try:")
+        if self.checkedYet == False:
+            print("Checking around your cell - ‘check’")
         if self.role == "warrior" and self.a1BashFail == False:
             print("Bashing the door down - 'bash'")
         elif self.role == "mage":
@@ -38,8 +41,39 @@ class A1:
         self.nexta1 = input("\nWhat do you want to do? Enter: ")
         return self.nexta1
     def beginningchoiceif(self):
+        
+        if self.nexta1 == "check" and self.checkedYet == False:
+            input("You check around your cell for a means of escape.")
+            input("There’s a small slit for a ‘window’, but it barely fits your hand.")
+            input("You almost get it stuck, even.")
+            input("Yeah, no, that’s not going to work.")
+            input("There’s a small crack in the wall, but it doesn’t even go all the way to, presumably, the next cell over.")
+            input("You kick the wall.")
+            input("You grimace, holding back any cry of pain.")
+            input("You don’t want people to think you’re even weaker than they do already, do you?")
+            input("Just toughen up already.")
+            input("Anyway, the wall isn’t an option.")
+            input("You bend down to the ground.")
+            input("Cold, hard stone.")
+            input("You can’t dig through this!")
+            input("Finally, you check out the cell’s bars.")
+            input("You tug on them, but they feel pretty sturdy.")
+            input("Definitely sturdier than the door.")
+            if self.role == "warrior":
+                input("Wait… you could try bashing it in!")
+            if self.role == "mage":
+                input("Wait… it’s made of wood, you could burn it down!")
+            if self.role == "rogue":
+                input("Wait… the lock doesn’t seem secure!")
+                input("You could try lockpicking it!")
+            input("Either way, you have at least some options.")
+
+            self.checkedYet = True
+            self.nexta1 = self.beginningchoice()
+            self.officiala1 = self.beginningchoiceif()
+        
         #warrior
-        if self.nexta1 == "bash" and self.a1BashFail == False:
+        elif self.nexta1 == "bash" and self.a1BashFail == False and self.role == "warrior":
             input("You attempt to bash the door down! Strength check!")
             check = die.rollSTR(self.char_stats)
             if check >= 6:
@@ -57,7 +91,7 @@ class A1:
             self.officiala1 = self.beginningchoiceif()
                 
         #mage
-        elif self.nexta1 == "cast": #add description for spells
+        elif self.nexta1 == "cast" and self.role == "mage": #add description for spells
             spells = ["Firebolt", "Frost Shield", "Teleport Spark"]
             used_spells = []
             print("Choose a spell to cast:")
@@ -93,7 +127,7 @@ class A1:
                 self.nexta1 == self.beginningchoice()
                 self.officiala1 = self.beginningchoiceif()
         #rogue
-        elif self.nexta1 == "lock" and self.a1LockFail == False:
+        elif self.nexta1 == "lock" and self.a1LockFail == False and self.role == "rogue":
             input("You take out your hair pin, letting your hair down for a bit.")
             input("You crouch, checking if there's any guards watching you.")
             input("All clear.")

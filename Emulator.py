@@ -104,7 +104,7 @@ if autoStatConfig == True:
 #beginning
 def beginning(): #change pacing, add more description to environment
     input("\033[34mYou find yourself lying on the ground, and the first thing you're aware of is the migraine blooming through your skull.\033[0m")
-    input("\033[31mWhat, did someone hit y- oh.")
+    input("\033[31mWhat, did someone hit y- oh.") #add more to standing up and such
     input("Someone did.\033[0m") #beat moment
     input("\033[36mFirst things first.\033[0m") #beat moment
     input("You were in the village, training like usual.")
@@ -117,11 +117,19 @@ def beginning(): #change pacing, add more description to environment
     elif role == "Rogue":
         input("\033[90mOpened locks were strewn about as you sat at the center of them crosslegged, them radiating outwards from you like a fractal.\033[0m")
         input("As you finally picked the last one, marking the 50th, you decided a celebratory break was in order.")
-    input("Shielding your eyes from the sunlight, you went for a walk towards the nearest bakery for a fresh loaf of bread.")
-    input("Seeing a commotion around a fallen cart, and people already crowding it, you ended up taking a shortcut by ducking along a dark alley.")
-    input("\033[36mThat's when it happened.\033[0m") #beat moment
+    input("Shielding your eyes from the sunlight, you went for a walk towards the nearest cafe for a cup of coffee.")
+    input("There’s one closer to your place, but it’s not as good, so you walked right past it.")
+    input("The scent of baked goods mixed with the remnants of the lingering puddles dripping down the cracks of the pavement from last night's rain, as you moved forward.") 
+    input("Up ahead you saw a commotion around a fallen cart, and people were already crowding it, like moths to a flame.")
+    input("You ended up taking a shortcut by ducking along a particularly dark alley.")
+    input("The type of alley that’s stained, with mysterious puddles you step around.")
+    input("\nThat's when it happened.") #beat moment
+    input("\nYou barely got the chance to register the footsteps behind you.")
+    input("Your vision suddenly went dark, as you felt a rough cloth covering your head.")
+    input("You recognized the chemical scent, and held your breath as you elbowed your attacker.")
+    input("However, rough hands gripped your arms, and your instinctual panic overrode your knowledge keeping you from breathing in.")
     input("Moving sluggishly from exhaustion, reflexes slowed despite yourself, you ended up kidnapped.")
-    input("\033[31mBy amateurs, too.\033[0m") #beat moment
+    input("(By amateurs, too.)") #beat moment
     input("As you pat yourself down, you find your stuff only a few meters away.")
     input("Behind bars, yes, but only a few meters.")
     input("\033[36mIf- no, WHEN you get out, you could get your stuff back.\033[0m") #beat moment
