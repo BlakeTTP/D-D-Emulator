@@ -107,6 +107,11 @@ def battle(player, enemy):
             print(f"\n❌ {player.name} has fallen! {enemy.name} wins! ❌")
             break
 
+        # Check if enemy is defeated
+        if enemy.stamina <= 0:
+           print(f"\n✅ {enemy.name} has been defeated! {player.name} wins! ✅")
+           break
+
         # Status update
         print(f"{player.name} Stamina: {player.stamina} | {enemy.name} Stamina: {enemy.stamina}")
         turn += 1
